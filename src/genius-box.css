@@ -58,6 +58,7 @@
 }
 
 #box-list article {
+    cursor: pointer;
     height: 80px;
     line-height: 80px;
     padding: 0 20px;
@@ -86,4 +87,5 @@
 #box-list article .title {
     display: inline-block;
     font-size: 22px;
+    float: left;
 }

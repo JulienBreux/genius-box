@@ -10,7 +10,7 @@
             <section id="box-input">
                 <input type="text" id="input" autofocus>
             </section>
-            <section id="box-list">
+            <section id="box-list" class="close">
                 <template repeat="{{item in items}}">
                     <article on-mouseover="{{changeCurrent}}" on-click="{{fireAction}}" class="{{ {current: item.current} | tokenList}}">
                         <span class="icon {{item.iconClass}}"></span>
@@ -22,15 +22,24 @@
         </section>
     </template>
     <script>
+    function callAjax(url, callback) {
+        var xmlhttp;
+
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                callback(JSON.parse(xmlhttp.responseText));
+            }
+        }
+        xmlhttp.open('GET', url, true);
+        xmlhttp.send();
+    }
+
     Polymer('genius-box', {
         ready: function() {
             var that = this;
 
-            this.items = [
-              {iconClass: 'foo', title: 'Foo', current: false},
-              {iconClass: 'bar', title: 'Bar', current: false},
-              {iconClass: 'baz', title: 'Baz', current: true}
-            ];
+            this.items = [];
 
             // Binding key down
             that.$.input.onkeydown = function keyBindingDown(e) {
@@ -43,7 +52,6 @@
             that.$.input.onkeyup = function keyBindingUp(e) {
                 // Key down
                 if (40 === e.keyCode) {
-                    console.log('Down');
                     var currentItem = that.items.reduce(function (memo, item, indexItem) {
                         return item.current ? indexItem : memo;
                     }, 0);
@@ -58,7 +66,6 @@
                     }
                 // Key up
                 } else if (38 === e.keyCode) {
-                    console.log('Up');
                     var currentItem = that.items.reduce(function (memo, item, indexItem) {
                         return item.current ? indexItem : memo;
                     }, 0);
@@ -73,15 +80,28 @@
                     }
                 // Key enter
                 } else if (13 === e.keyCode) {
-                    console.log('Enter');
                     var currentItem = that.items.reduce(function (memo, item, indexItem) {
                         return item.current ? indexItem : memo;
                     }, 0);
 
-                    console.log('run');
+                    var item = that.items[currentItem];
+
+                    // Fire! (@todo Duplicate l:129)
+                    that.close();
+                    window.location.href = item.url;
+                // Esc
+                } else if (27 === e.keyCode) {
+                    that.close();
                 // Others keys
                 } else {
-                    console.log('Others');
+                    callAjax(that.source, function(data) {
+                        that.items = data.items;
+                        that.items.map(function (item, index) {
+                            item.current = index == 0;
+                        });
+
+                        that.$['box-list'].className = that.items.length ? '' : 'close';
+                    });
                 }
             }
         },
@@ -106,7 +126,9 @@
             var item = e.target.templateInstance.model.item;
             item.current = true;
 
-            console.log('run');
+            // Fire! (@todo Duplicate l:89)
+            that.close();
+            window.location.href = item.url;
         },
         open: function() {
             this.$['box-overlay'].className = '';
