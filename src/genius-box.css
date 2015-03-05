@@ -31,7 +31,7 @@
 
 #box-input input {
     border: 0;
-    border-radius: 5px 5px 0 0;
+    background-color:transparent;
     -webkit-box-sizing: border-box;‌​
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -69,5 +69,4 @@
 #box-list article .title {
     display: inline-block;
     font-size: 22px;
-    text-indent: 10px;
 }
