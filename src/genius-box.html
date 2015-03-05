@@ -5,8 +5,8 @@
 <polymer-element name="genius-box" attributes="source max-display-items">
     <template>
         <link rel="stylesheet" href="genius-box.css">
-        <section id="box-overlay"></section>
-        <section id="box-container">
+        <section id="box-overlay" class="close" on-click="{{close}}"></section>
+        <section id="box-container" class="close">
             <section id="box-input">
                 <input type="text" id="input" autofocus>
             </section>
@@ -32,8 +32,15 @@
               {iconClass: 'baz', title: 'Baz', current: true}
             ];
 
-            // Binding
-            this.$.input.onkeyup = function keyBinding(e) {
+            // Binding key down
+            that.$.input.onkeydown = function keyBindingDown(e) {
+                if (40 === e.keyCode || 38 === e.keyCode) {
+                    e.preventDefault();
+                }
+            };
+
+            // Binding key up
+            that.$.input.onkeyup = function keyBindingUp(e) {
                 // Key down
                 if (40 === e.keyCode) {
                     console.log('Down');
@@ -44,6 +51,10 @@
                     if (currentItem + 1 < that.items.length) {
                         that.items[currentItem].current = false;
                         that.items[currentItem + 1].current = true;
+
+                        that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
+
+                        e.preventDefault();
                     }
                 // Key up
                 } else if (38 === e.keyCode) {
@@ -55,6 +66,10 @@
                     if (currentItem > 0) {
                         that.items[currentItem].current = false;
                         that.items[currentItem - 1].current = true;
+
+                        that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
+
+                        e.preventDefault();
                     }
                 // Key enter
                 } else if (13 === e.keyCode) {
@@ -92,6 +107,18 @@
             item.current = true;
 
             console.log('run');
+        },
+        open: function() {
+            this.$['box-overlay'].className = '';
+            this.$['box-container'].className = '';
+
+            var input = this.$['input'];
+            input.value = '';
+            input.focus();
+        },
+        close: function() {
+            this.$['box-overlay'].className = 'close';
+            this.$['box-container'].className = 'close';
         }
     });
     </script>

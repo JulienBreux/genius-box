@@ -2,6 +2,10 @@
     display: block;
 }
 
+.close {
+    display: none;
+}
+
 #box-overlay {
     background-color: rgba(0,0,0,.5);
     bottom: 0;
