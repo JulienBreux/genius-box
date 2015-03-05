@@ -1,41 +1,69 @@
 :host {
     display: block;
-    position: absolute;
-    z-index: 3456789;
-    top: 100px;
-    left: 50%;
-    width: 618px;
-    margin-left: -310px;
-    padding: 1px;
+}
 
-    background-color: #f00;
+#box-overlay {
+    background-color: rgba(0,0,0,.5);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3456788;
+}
+
+#box-container {
+    background-color: #fff;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    left: 50%;
+    margin-left: -310px;
+    position: absolute;
+    top: 100px;
+    width: 620px;
+    z-index: 3456789;
 }
 
 #box-input {
-    width: 100%;
     border: 0;
+    width: 100%;
 }
 
 #box-input input {
-    width: 616px;
-    height: 80px;
     border: 0;
+    border-radius: 5px 5px 0 0;
+    -webkit-box-sizing: border-box;‌​
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     font-size: 22px;
     font-color: #22262D;
+    height: 80px;
+    outline: none;
     text-indent: 20px;
+    width: 100%;
 }
 
 #box-list {
-    overflow: auto;
     max-height: 80px;
     max-height: 400px;
+    overflow: auto;
 }
 
 #box-list article {
     height: 80px;
     line-height: 80px;
+    padding: 0 20px;
+}
+
+#box-list article:last-child {
+    border-radius: 0px 0px 5px 5px;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 20px;
+}
+
+#box-list article.current {
+    background-color: rgba(0,0,0,.08);
 }
 
 #box-list article .title {

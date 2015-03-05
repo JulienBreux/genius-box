@@ -5,20 +5,23 @@
 <polymer-element name="genius-box" attributes="source max-display-items">
     <template>
         <link rel="stylesheet" href="genius-box.css">
-        <section id="box-input">
-            <input type="text" id="">
-        </section>
-        <section id="box-list">
-            <article>
-                <span class="icon"></span>
-                <span class="title">Foo</span>
-                <span class="shortcut"></span>
-            </article>
-            <article class="current">
-                <span class="icon"></span>
-                <span class="title">Bar</span>
-                <span class="shortcut"></span>
-            </article>
+        <section id="box-overlay"></section>
+        <section id="box-container">
+            <section id="box-input">
+                <input type="text" id="">
+            </section>
+            <section id="box-list">
+                <article>
+                    <span class="icon"></span>
+                    <span class="title">Foo</span>
+                    <span class="shortcut"></span>
+                </article>
+                <article class="current">
+                    <span class="icon"></span>
+                    <span class="title">Bar</span>
+                    <span class="shortcut"></span>
+                </article>
+            </section>
         </section>
     </template>
     <script>
