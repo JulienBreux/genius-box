@@ -8,7 +8,7 @@
         <section id="box-overlay"></section>
         <section id="box-container">
             <section id="box-input">
-                <input type="text" id="" autofocus>
+                <input type="text" id="input" autofocus>
             </section>
             <section id="box-list">
                 <article>
@@ -27,6 +27,22 @@
     <script>
     Polymer('genius-box', {
         ready: function() {
+            // Binding
+            this.$.input.onkeyup = function keyBinding(e) {
+                // Key down
+                if (40 === e.keyCode) {
+                    console.log('Down');
+                // Key up
+                } else if (38 === e.keyCode) {
+                    console.log('Up');
+                // Key enter
+                } else if (13 === e.keyCode) {
+                    console.log('Enter');
+                // Others keys
+                } else {
+                    console.log('Others');
+                }
+            }
         }
     });
     </script>

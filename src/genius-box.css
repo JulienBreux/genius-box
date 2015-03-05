@@ -49,6 +49,10 @@
     overflow: auto;
 }
 
+#box-list .open {
+    display: hide;
+}
+
 #box-list article {
     height: 80px;
     line-height: 80px;
