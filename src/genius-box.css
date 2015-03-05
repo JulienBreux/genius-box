@@ -53,6 +53,7 @@
     height: 80px;
     line-height: 80px;
     padding: 0 20px;
+    position: relative;
 }
 
 #box-list article:last-child {
@@ -64,6 +65,14 @@
 
 #box-list article.current {
     background-color: rgba(0,0,0,.08);
+}
+
+#box-list article.current:after {
+    content: "⏎";
+    position: absolute;
+    right: 20px;
+    color: rgba(0,0,0,.3);
+    font-size: 1.25em;
 }
 
 #box-list article .title {
