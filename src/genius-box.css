@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    position: absolute;
+    z-index: 3456789;
+    top: 100px;
+    left: 50%;
+    width: 618px;
+    margin-left: -310px;
+    padding: 1px;
+
+    background-color: #f00;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#box-input {
+    width: 100%;
+    border: 0;
+}
+
+#box-input input {
+    width: 616px;
+    height: 80px;
+    border: 0;
+    font-size: 22px;
+    font-color: #22262D;
+    text-indent: 20px;
+}
+
+#box-list {
+    overflow: auto;
+    max-height: 80px;
+    max-height: 400px;
+}
+
+#box-list article {
+    height: 80px;
+    line-height: 80px;
+}
+
+#box-list article .title {
+    display: inline-block;
+    font-size: 22px;
+    text-indent: 10px;
+}

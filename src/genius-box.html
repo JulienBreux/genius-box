@@ -1,0 +1,30 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Define your custom element -->
+<polymer-element name="genius-box" attributes="source max-display-items">
+    <template>
+        <link rel="stylesheet" href="genius-box.css">
+        <section id="box-input">
+            <input type="text" id="">
+        </section>
+        <section id="box-list">
+            <article>
+                <span class="icon"></span>
+                <span class="title">Foo</span>
+                <span class="shortcut"></span>
+            </article>
+            <article class="current">
+                <span class="icon"></span>
+                <span class="title">Bar</span>
+                <span class="shortcut"></span>
+            </article>
+        </section>
+    </template>
+    <script>
+    Polymer('genius-box', {
+        ready: function() {
+        }
+    });
+    </script>
+</polymer-element>
