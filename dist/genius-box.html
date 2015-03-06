@@ -2,13 +2,13 @@
 <link rel="import" href="../../polymer/polymer.html">
 
 <!-- Define your custom element -->
-<polymer-element name="genius-box" attributes="source max-display-items">
+<polymer-element name="genius-box" attributes="source max-display-items placeholder">
     <template>
         <link rel="stylesheet" href="genius-box.css">
         <section id="box-overlay" class="close" on-click="{{close}}"></section>
         <section id="box-container" class="close">
             <section id="box-input">
-                <input type="text" id="input">
+                <input type="text" id="input" placeholder="Search...">
             </section>
             <section id="box-list" class="close">
                 <template repeat="{{item in items}}">
