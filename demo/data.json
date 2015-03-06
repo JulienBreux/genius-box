@@ -1,7 +1,7 @@
 {
 	"items": [
-		{"iconClass": "foo", "title": "Foo", "url": "index.html#foo"},
-		{"iconClass": "bar", "title": "Bar", "url": "index.html#bar"},
-		{"iconClass": "baz", "title": "Baz", "url": "index.html#baz"}
+		{"iconClass": "foo", "title": "Foo", "action": "redirect", "parameters": {"url": "index.html#foo"}},
+		{"iconClass": "bar", "title": "Bar", "action": "redirect", "parameters": {"url": "index.html#bar"}},
+		{"iconClass": "baz", "title": "Baz", "action": "redirect", "parameters": {"url": "index.html#baz"}}
 	]
 }
