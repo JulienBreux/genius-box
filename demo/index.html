@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Genius Box demo</title>
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+    <!-- Importing Custom Elements -->
+    <link rel="import" href="../src/genius-box.html">
+</head>
+<body>
+	<genius-box source="data.json" max-display-items="5" id="geniusBox"></genius-box>
+
+	<a href="javascript:document.getElementById('geniusBox').open();">Open Genius Box</a>
+
+	<script>
+	document.getElementsByTagName('body')[0].onkeyup = function(e) {
+		if (71 === e.keyCode) {
+			document.getElementById('geniusBox').open();
+		}
+	};
+	</script>
+</body>
+</html>

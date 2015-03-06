@@ -1,0 +1,24 @@
+{
+  "name": "genius-box",
+  "version": "0.0.1",
+  "homepage": "https://github.com/iadvize/genius-box",
+  "authors": [
+    "Julien Breux <julien.breux@iadvize.com>",
+    "Florent Gosselin <florent@iadvize.com>"
+  ],
+  "description": "Genius box",
+  "main": "genius-box.js",
+  "keywords": [
+    "iadvize",
+    "genius"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2"
+  }
+}
