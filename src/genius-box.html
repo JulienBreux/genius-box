@@ -31,7 +31,6 @@
                 callback(JSON.parse(xmlhttp.responseText));
             }
         }
-        console.log(query);
         xmlhttp.open('GET', url + '?q=' + query, true);
         xmlhttp.send();
     }
@@ -95,6 +94,11 @@
                     that.close();
                 // Others keys
                 } else {
+                    if (that.$.input.value.length === 0) {
+                        that.listClose(that);
+                        return;
+                    }
+
                     callAjax(that.source, that.$.input.value, function(data) {
                         that.items = data.items;
                         that.items.map(function (item, index) {
@@ -143,6 +147,10 @@
             this.items = [];
             this.$['box-overlay'].className = 'close';
             this.$['box-container'].className = 'close';
+        },
+        listClose: function(element) {
+            element.items = [];
+            element.$['box-list'].className = 'close';
         }
     });
     </script>
