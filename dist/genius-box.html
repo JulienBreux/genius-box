@@ -45,6 +45,16 @@
             that.$.input.onkeydown = function keyBindingDown(e) {
                 if (40 === e.keyCode || 38 === e.keyCode) {
                     e.preventDefault();
+                // Tab
+                } else if (9 === e.keyCode) {
+                    var currentItem = that.items.reduce(function (memo, item, indexItem) {
+                        return item.current ? indexItem : memo;
+                    }, 0);
+
+                    that.$.input.value = that.items[currentItem].title + ' ';
+                    that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
+
+                    e.preventDefault();
                 }
             };
 
