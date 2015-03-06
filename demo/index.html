@@ -16,5 +16,13 @@
 	<genius-box source="data.json" max-display-items="5" id="geniusBox"></genius-box>
 
 	<a href="javascript:document.getElementById('geniusBox').open();">Open Genius Box</a>
+
+	<script>
+	document.getElementsByTagName('body')[0].onkeyup = function(e) {
+		if (71 === e.keyCode) {
+			document.getElementById('geniusBox').open();
+		}
+	};
+	</script>
 </body>
 </html>
