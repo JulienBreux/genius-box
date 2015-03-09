@@ -1,7 +1,11 @@
 {
 	"items": [
-		{"iconClass": "foo", "title": "Foo", "action": "redirect", "parameters": {"url": "index.html#foo"}},
-		{"iconClass": "bar", "title": "Bar", "action": "redirect", "parameters": {"url": "index.html#bar"}},
-		{"iconClass": "baz", "title": "Baz", "action": "redirect", "parameters": {"url": "index.html#baz"}}
+		{"iconClass": "ico-red", "title": "Red", "action": "redirect", "parameters": {"url": "index.html#red"}},
+		{"iconClass": "ico-green", "title": "Green", "action": "redirect", "parameters": {"url": "index.html#green", "otherWindow": true}},
+		{"iconClass": "ico-blue", "title": "Blue", "action": "redirect", "parameters": {"url": "index.html#{{color}}", "color": "blue"}},
+		{"iconClass": "ico-yellow", "title": "Yellow", "action": "redirect", "parameters": {"url": "index.html#yellow"}},
+		{"iconClass": "ico-orange", "title": "Orange", "action": "redirect", "parameters": {"url": "index.html#orange"}},
+		{"iconClass": "ico-black", "title": "Black", "action": "redirect", "parameters": {"url": "index.html#black"}},
+		{"iconClass": "ico-grey", "title": "Grey", "action": "redirect", "parameters": {"url": "index.html#grey"}}
 	]
 }

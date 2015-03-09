@@ -1,18 +1,15 @@
-<!-- Import Polymer -->
 <link rel="import" href="../../polymer/polymer.html">
-
-<!-- Define your custom element -->
 <polymer-element name="genius-box" attributes="source max-display-items placeholder">
     <template>
         <link rel="stylesheet" href="genius-box.css">
         <section id="box-overlay" class="close" on-click="{{close}}"></section>
         <section id="box-container" class="close">
             <section id="box-input">
-                <input type="text" id="input" placeholder="Search...">
+                <input type="text" id="input" placeholder="{{placeholder || 'Search...'}}" on-keyup="{{eventInput}}" on-keydown="{{eventInput}}">
             </section>
-            <section id="box-list" class="close">
+            <section id="box-list">
                 <template repeat="{{item in items}}">
-                    <article on-mouseover="{{changeCurrent}}" on-click="{{fireAction}}" class="{{ {current: item.current} | tokenList}}">
+                    <article on-mouseover="{{eventList}}" on-click="{{eventList}}" class="{{ {current: item.current} | tokenList}}">
                         <span class="icon {{item.iconClass}}"></span>
                         <span class="title">{{item.title}}</span>
                         <span class="shortcut"></span>
@@ -21,151 +18,5 @@
             </section>
         </section>
     </template>
-    <script>
-    function callAjax(url, query, callback) {
-        var xmlhttp;
-
-        xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                callback(JSON.parse(xmlhttp.responseText));
-            }
-        }
-        xmlhttp.open('GET', url + '?q=' + query, true);
-        xmlhttp.send();
-    }
-
-    Polymer('genius-box', {
-        ready: function() {
-            var that = this;
-
-            this.items = [];
-
-            // Binding key down
-            that.$.input.onkeydown = function keyBindingDown(e) {
-                if (40 === e.keyCode || 38 === e.keyCode) {
-                    e.preventDefault();
-                // Tab
-                } else if (9 === e.keyCode) {
-                    var currentItem = that.items.reduce(function (memo, item, indexItem) {
-                        return item.current ? indexItem : memo;
-                    }, 0);
-
-                    that.$.input.value = that.items[currentItem].title + ' ';
-                    that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
-
-                    e.preventDefault();
-                }
-            };
-
-            // Binding key up
-            that.$.input.onkeyup = function keyBindingUp(e) {
-                // Key down
-                if (40 === e.keyCode) {
-                    var currentItem = that.items.reduce(function (memo, item, indexItem) {
-                        return item.current ? indexItem : memo;
-                    }, 0);
-
-                    if (currentItem + 1 < that.items.length) {
-                        that.items[currentItem].current = false;
-                        that.items[currentItem + 1].current = true;
-
-                        that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
-
-                        e.preventDefault();
-                    }
-                // Key up
-                } else if (38 === e.keyCode) {
-                    var currentItem = that.items.reduce(function (memo, item, indexItem) {
-                        return item.current ? indexItem : memo;
-                    }, 0);
-
-                    if (currentItem > 0) {
-                        that.items[currentItem].current = false;
-                        that.items[currentItem - 1].current = true;
-
-                        that.$.input.setSelectionRange(that.$.input.value.length , that.$.input.value.length);
-
-                        e.preventDefault();
-                    }
-                // Key enter
-                } else if (13 === e.keyCode) {
-                    var currentItem = that.items.reduce(function (memo, item, indexItem) {
-                        return item.current ? indexItem : memo;
-                    }, 0);
-
-                    var item = that.items[currentItem];
-
-                    // Fire! (@todo Duplicate l:129)
-                    that.close();
-                    if (item.action == 'redirect' && item.parameters.url) {
-                        window.location.href = item.parameters.url;
-                    }
-                // Esc
-                } else if (27 === e.keyCode) {
-                    that.close();
-                // Others keys
-                } else {
-                    if (that.$.input.value.length === 0) {
-                        that.listClose(that);
-                        return;
-                    }
-
-                    callAjax(that.source, that.$.input.value, function(data) {
-                        that.items = data.items;
-                        that.items.map(function (item, index) {
-                            item.current = index == 0;
-                        });
-
-                        that.$['box-list'].className = that.items.length ? '' : 'close';
-                    });
-                }
-            }
-        },
-        // Change current
-        changeCurrent: function(e, detail, sender) {
-            // Clear all
-            this.items.map(function (item) {
-                item.current = false;
-            });
-
-            // Select current
-            var item = e.target.templateInstance.model.item;
-            item.current = true;
-        },
-        fireAction: function(e, detail, sender) {
-            // Clear all
-            this.items.map(function (item) {
-                item.current = false;
-            });
-
-            // Select current
-            var item = e.target.templateInstance.model.item;
-            item.current = true;
-
-            // Fire! (@todo Duplicate l:89)
-            this.close();
-            if (item.action == 'redirect' && item.parameters.url) {
-                window.location.href = item.parameters.url;
-            }
-        },
-        open: function() {
-            this.$['box-overlay'].className = '';
-            this.$['box-container'].className = '';
-
-            var input = this.$['input'];
-            input.value = '';
-            input.focus();
-        },
-        close: function() {
-            this.items = [];
-            this.$['box-overlay'].className = 'close';
-            this.$['box-container'].className = 'close';
-        },
-        listClose: function(element) {
-            element.items = [];
-            element.$['box-list'].className = 'close';
-        }
-    });
-    </script>
+    <script src="genius-box.js"></script>
 </polymer-element>

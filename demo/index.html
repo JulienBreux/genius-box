@@ -13,13 +13,15 @@
     <link rel="import" href="../src/genius-box.html">
 </head>
 <body>
-	<genius-box source="data.json" max-display-items="5" id="geniusBox"></genius-box>
+	<genius-box source="data.json" max-display-items="3" id="geniusBox"></genius-box>
 
-	<a href="javascript:document.getElementById('geniusBox').open();">Open Genius Box</a>
+	<p>
+		<a href="javascript:document.getElementById('geniusBox').open();">Open Genius Box</a> or press "<code>&lt;</code>" key.
+	</p>
 
 	<script>
 	document.getElementsByTagName('body')[0].onkeyup = function(e) {
-		if (71 === e.keyCode) {
+		if (188 === e.keyCode) {
 			document.getElementById('geniusBox').open();
 		}
 	};
