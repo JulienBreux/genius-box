@@ -382,7 +382,6 @@ Polymer('genius-box', {
         this.overlay().show();
         this.box().show();
         this.input().clear().focus();
-        //this.list().open();
         this.list().close();
     },
 
