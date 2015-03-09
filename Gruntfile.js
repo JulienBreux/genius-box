@@ -17,9 +17,16 @@ module.exports = function(grunt) {
                     to: '..'
                 }]
             }
+        },
+        'gh-pages': {
+            options: {
+                base: 'demo'
+            },
+            src: ['**']
         }
     });
 
+    grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-text-replace');
 
