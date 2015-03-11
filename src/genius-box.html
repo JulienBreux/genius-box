@@ -1,0 +1,22 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="genius-box" attributes="source max-display-items placeholder">
+    <template>
+        <link rel="stylesheet" href="genius-box.css">
+        <section id="box-overlay" class="close" on-click="{{close}}"></section>
+        <section id="box-container" class="close">
+            <section id="box-input">
+                <input type="text" id="input" placeholder="{{placeholder || 'Search...'}}" on-keyup="{{eventInput}}" on-keydown="{{eventInput}}">
+            </section>
+            <section id="box-list">
+                <template repeat="{{item in items}}">
+                    <article on-mouseover="{{eventList}}" on-click="{{eventList}}" class="{{ {current: item.current} | tokenList}}">
+                        <span class="icon {{item.iconClass}}"></span>
+                        <span class="title">{{item.title}}</span>
+                        <span class="shortcut"></span>
+                    </article>
+                </template>
+            </section>
+        </section>
+    </template>
+    <script src="genius-box.js"></script>
+</polymer-element>
