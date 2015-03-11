@@ -3,6 +3,7 @@
 [![Bower version](https://img.shields.io/bower/v/genius-box.svg)](http://bower.io/search/?q=genius-box)
 [![Florent Gosselin](https://img.shields.io/badge/UX-fgosselin-green.svg)](https://github.com/fgosselin)
 [![Julien Breux](https://img.shields.io/badge/DEV-JulienBreux-green.svg)](https://github.com/JulienBreux)
+[![iAdvize](https://img.shields.io/badge/BY-iAdvize-brightgreen.svg)](https://www.iadvize.com/)
 
 > Web Component to display an amazing launcher box like Alfred Mac.
 
