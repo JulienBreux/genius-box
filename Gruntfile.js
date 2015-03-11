@@ -20,9 +20,13 @@ module.exports = function(grunt) {
         },
         'gh-pages': {
             options: {
-                base: 'demo'
+                clone: 'bower_components/genius-box'
             },
-            src: ['**']
+            src: [
+                'bower_components/**/*',
+                '!bower_components/genius-box/**/*',
+                'demo/*', 'src/*', 'index.html'
+            ]
         }
     });
 
