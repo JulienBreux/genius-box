@@ -149,6 +149,16 @@ Polymer('genius-box', {
             },
             text: function () {
                 return input.value;
+            },
+            spinner: function () {
+                return {
+                    show: function () {
+                        $this.$['input-spinner'].style.display = 'block';
+                    },
+                    hide: function () {
+                        $this.$['input-spinner'].style.display = 'none';
+                    }
+                }
             }
         }
     },
@@ -337,6 +347,8 @@ Polymer('genius-box', {
 
         return {
             request: function (url, query, callback) {
+                $this.input().spinner().show();
+
                 if (typeof XMLHttpRequest !== 'undefined') {
                     $this.xhr = new XMLHttpRequest();
                 }
@@ -347,7 +359,7 @@ Polymer('genius-box', {
                                     'MSXML2.XmlHttp.2.0',
                                     'Microsoft.XmlHttp'];
  
-                    for(var i = 0, len = versions.length; i < len; i++) {
+                    for (var i = 0, len = versions.length; i < len; i++) {
                         try {
                             $this.xhr = new ActiveXObject(versions[i]);
                             break;
@@ -358,6 +370,7 @@ Polymer('genius-box', {
 
                 $this.xhr.onreadystatechange = function () {
                     if ($this.xhr.readyState == 4 && $this.xhr.status == 200) {
+                        $this.input().spinner().hide();
                         callback(JSON.parse($this.xhr.responseText));
                     }
                 }
