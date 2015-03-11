@@ -1,5 +1,7 @@
 # &lt;genius-box&gt;
 
+![Bower version](https://img.shields.io/bower/v/genius-box.svg)
+
 > Web Component to display an amazing launcher box like Alfred Mac.
 
 ## Demo
