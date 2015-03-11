@@ -35,5 +35,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
 
     grunt.registerTask('build',  ['replace']);
+    grunt.registerTask('deploy', ['gh-pages']);
     grunt.registerTask('server', ['connect']);
 };
