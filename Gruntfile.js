@@ -25,7 +25,9 @@ module.exports = function(grunt) {
             src: [
                 'bower_components/**/*',
                 '!bower_components/genius-box/**/*',
-                'demo/*', 'src/*', 'index.html'
+                'demo/*',
+                'src/*',
+                'index.html'
             ]
         }
     });
