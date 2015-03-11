@@ -53,6 +53,8 @@ Method    | Parameters  | Returns  | Description
 
 ## Source
 
+Every keystroke is sent to the source via the query string in `q` variable.
+
 ```json
 {
     "items": [
