@@ -205,6 +205,9 @@ Polymer('genius-box', {
 
                 return this;
             },
+            cursorInit: function () {
+                $this.cursor = -1;
+            },
             cursorSelect: function () {
                 this.selectCurrent($this.items[$this.cursor]);
 
@@ -290,7 +293,7 @@ Polymer('genius-box', {
             },
             close: function () {
                 this.clear();
-                $this.cursor = 0;
+                this.cursorInit();
                 $this.position = 0;
                 list.className = 'close';
 
